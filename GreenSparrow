@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>GREENSPARROW | Cyberwear Edition | Official Store Bandung</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0A0A0F;
+            font-family: 'Rajdhani', 'Courier New', monospace;
+            color: #E0E0FF;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F0F1A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00FF66;
+            border-radius: 3px;
+            box-shadow: 0 0 8px #00FF66;
+        }
+
+        /* Grid background futuristik */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 102, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 102, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== HEADER CYBERPUNK ========== */
+        .glitch-wrapper {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .glitch {
+            font-size: 4rem;
+            font-weight: 700;
+            font-family: 'Orbitron', 'Rajdhani', monospace;
+            letter-spacing: 8px;
+            position: relative;
+            color: #00FF66;
+            text-shadow: 0 0 10px #00FF66, 0 0 20px #00FF66;
+            animation: glitch-skew 3s infinite;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        .glitch::before {
+            color: #B200FF;
+            z-index: -1;
+            animation: glitch-1 0.3s infinite;
+        }
+
+        .glitch::after {
+            color: #00FFFF;
+            z-index: -2;
+            animation: glitch-2 0.3s infinite;
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { transform: translate(0); }
+            33% { transform: translate(-3px, -2px); }
+            66% { transform: translate(3px, 2px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { transform: translate(0); }
+            33% { transform: translate(3px, 2px); }
+            66% { transform: translate(-3px, -2px); }
+        }
+
+        @keyframes glitch-skew {
+            0%, 100% { transform: skew(0deg); }
+            50% { transform: skew(2deg); }
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            color: #00FF66;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-family: monospace;
+            border-bottom: 1px solid rgba(0, 255, 102, 0.3);
+            display: inline-block;
+            padding-bottom: 8px;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .subtitle::before {
+            content: "> ";
+            color: #00FFFF;
+        }
+        .subtitle::after {
+            content: " _";
+            color: #00FFFF;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ========== GRID PRODUK ========== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .product-card {
+            background: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(0, 255, 102, 0.3);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 102, 0.1), transparent);
+            transition: left 0.5s;
+            pointer-events: none;
+        }
+
+        .product-card:hover {
+            border-color: #00FF66;
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 100%);
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid rgba(0, 255, 102, 0.2);
+        }
+
+        .image-placeholder span {
+            font-size: 3rem;
+            opacity: 0.6;
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            color: #00FF66;
+            border: 1px solid #00FF66;
+            font-family: monospace;
+        }
+
+        .product-info {
+            padding: 1.2rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .product-sku {
+            font-size: 0.7rem;
+            color: #00FFFF;
+            font-family: monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            color: #aaa;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #00FF66;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 5px rgba(0, 255, 102, 0.5);
+        }
+
+        /* Tombol Cyberpunk */
+        .btn-cyber {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #00FF66;
+            color: #00FF66;
+            padding: 8px 20px;
+            border-radius: 0;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+            text-align: center;
+            width: 100%;
+            cursor: pointer;
+            font-family: monospace;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cyber:hover {
+            background: #00FF66;
+            color: #0A0A0F;
+            box-shadow: 0 0 15px #00FF66;
+            border-color: #00FF66;
+        }
+
+        /* ========== SECTION INFO TOKO ========== */
+        .store-info {
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid rgba(0, 255, 102, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.1rem;
+            color: #00FFFF;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .address-text {
+            color: #aaa;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-link {
+            color: #00FF66;
+            text-decoration: none;
+            border-bottom: 1px dashed #00FF66;
+            transition: all 0.2s;
+        }
+
+        .map-link:hover {
+            color: #00FFFF;
+            border-bottom-color: #00FFFF;
+        }
+
+        /* ========== SOCIAL LINKS ========== */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid #00FF66;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #00FF66;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background: #00FF66;
+            color: #0A0A0F;
+            box-shadow: 0 0 15px #00FF66;
+        }
+
+        .footer-line {
+            border-top: 1px solid rgba(0, 255, 102, 0.3);
+            margin: 1.5rem 0;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #555;
+            font-family: monospace;
+        }
+
+        /* Info panel kedua */
+        .info-panel {
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid rgba(0, 255, 102, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+            .grid {
+                gap: 1.2rem;
+            }
+            .social-links {
+                gap: 1rem;
+            }
+            .social-btn {
+                padding: 6px 16px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER CYBERPUNK -->
+    <div class="glitch-wrapper">
+        <div class="glitch" data-text="GREENSPARROW">GREENSPARROW</div>
+    </div>
+    <div style="text-align: center;">
+        <div class="subtitle">CYBERWEAR // EDITION 01 // BANDUNG // INDONESIA</div>
+    </div>
+
+    <!-- STORE ADDRESS + GOOGLE MAPS -->
+    <div class="store-info">
+        <div class="info-title">
+            📍 // BASE OF OPERATION //
+        </div>
+        <div class="address-text">
+            <strong>GreenSparrow Official Store</strong><br>
+            Jalan Nyengseret Utara, Gang Yeye Surya No. 209/198B<br>
+            RT 08 RW 02, Bandung, Jawa Barat<br>
+            Indonesia 40264<br><br>
+            🗺️ <a href="https://maps.google.com/?q=Jalan+Nyengseret+Utara+Gang+Yeye+Surya+209+198B+Bandung" target="_blank" class="map-link">📍 BUKA DI GOOGLE MAPS →</a>
+        </div>
+    </div>
+
+    <!-- GRID PRODUK -->
+    <div class="grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="image-placeholder">
+                <span>🧥⚡</span>
+                <div class="badge">LIMITED</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">NEO-TOKYO JACKET</div>
+                <div class="product-sku">[GS-X1] // TECHWEAR</div>
+                <div class="product-desc">Water-repellent tech jacket with reflective strips, multiple utility pockets, and cyberpunk silhouette.</div>
+                <div class="price">IDR 899.000</div>
+                <a href="https://wa.me/6281228881935?text=Halo%20GreenSparrow,%20saya%20tertarik%20dengan%20NEO-TOKYO%20JACKET" class="btn-cyber" target="_blank">
+                    [ ORDER VIA WA ] →
+                </a>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="image-placeholder">
+                <span>👕💚</span>
+                <div class="badge">ECO-TECH</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">CYBER-GREEN HOODIE</div>
+                <div class="product-sku">[GS-G7] // OVERSIZED</div>
+                <div class="product-desc">Organic cotton hoodie with neon embroidery, kangaroo pocket, and cyber-green accent stitch.</div>
+                <div class="price">IDR 599.000</div>
+                <a href="https://wa.me/6281228881935?text=Halo%20GreenSparrow,%20saya%20tertarik%20dengan%20CYBER-GREEN%20HOODIE" class="btn-cyber" target="_blank">
+                    [ ORDER VIA WA ] →
+                </a>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="image-placeholder">
+                <span>👖🔮</span>
+                <div class="badge">PRE-ORDER</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">GLITCH CARGO PANTS</div>
+                <div class="product-sku">[GS-P3] // TECH CARGO</div>
+                <div class="product-desc">Multi-pocket cargo pants with adjustable straps, reflective piping, and loose fit silhouette.</div>
+                <div class="price">IDR 749.000</div>
+                <a href="https://wa.me/6281228881935?text=Halo%20GreenSparrow,%20saya%20tertarik%20dengan%20GLITCH%20CARGO%20PANTS" class="btn-cyber" target="_blank">
+                    [ ORDER VIA WA ] →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO PANEL ECO-CYBER -->
+    <div class="info-panel">
+        <div class="info-title">// ECO-CYBER MANIFESTO //</div>
+        <div class="info-text">
+            GreenSparrow fuses sustainable materials with cyberpunk aesthetics. <br>
+            Every piece is crafted with eco-friendly dyes + recycled fabrics. <br>
+            Wear the future — without destroying it.
+        </div>
+    </div>
+
+    <!-- SOCIAL LINKS - WhatsApp, Shopee, TikTok -->
+    <div class="social-links">
+        <a href="https://wa.me/6281228881935" target="_blank" class="social-btn">
+            💚 WA // ORDER & CHAT
+        </a>
+        <a href="https://shopee.co.id/greensparrow" target="_blank" class="social-btn">
+            📦 Shopee // GreenSparrow
+        </a>
+        <a href="https://tiktok.com/@greensparrow" target="_blank" class="social-btn">
+            📱 TikTok // @greensparrow
+        </a>
+        <a href="https://instagram.com/greensparrow.id" target="_blank" class="social-btn">
+            📷 Instagram // @greensparrow.id
+        </a>
+    </div>
+
+    <div class="footer-line"></div>
+    <div class="copyright">
+        ⚡ GREENSPARROW // CYBERWEAR EST. 2025 // BANDUNG, INDONESIA ⚡
+    </div>
+</div>
+
+</body>
+</html>
